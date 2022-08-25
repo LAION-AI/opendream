@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<title>LAION Dream</title>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"></link>
+    
+    <link rel="stylesheet" href="LAION_dream.css"></link>
+</head>
+<body>
+    <div id="tools">
+        <div class="eraser_size"></div>
+        <div class="marker_size"></div>
+        <div class="void_size"></div>
+        </div>
+        <div id="images">
+          <canvas id="canva"></canvas>
+        </div>
+        
+        <div class="context" hidden>
+          <div class="border_fix">
+          <div class="resize_wrapper">
+          <div class="context_item"> 
+            <div class="inner_item" id="create">
+              Create
+            </div> 
+          </div>
+          <div class="context_item"> 
+            <div class="inner_item" id="inpaint">
+              Inpaint
+            </div> 
+          </div>
+          <div class="context_item"> 
+            <div class="inner_item">
+              Copy
+            </div> 
+          </div>
+          <div class="context_item"> 
+            <div class="inner_item">
+              Enhance
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="expansion_override"></div>
+        </div>
+</body>
+<script src="LAION_dream.js">
+</script>
+</html>

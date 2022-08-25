@@ -1,0 +1,222 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+        body {
+          margin: 0;
+          padding: 0;
+          
+          width: 100%;
+          height: 100vh;
+         
+          background: white;
+          background-image: linear-gradient(rgba(30, 30, 30, .7) .05em, transparent .05em), linear-gradient(90deg, rgba(30, 30, 30, .7) .05em, transparent .05em);
+          background-size: 1em 1em;
+        }
+        @font-face {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 400;
+          src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+        }
+        body {
+          font-family: 'Roboto', sans-serif;
+          background-color: #eee;
+          font-size: 14px;
+        }
+        body p {
+          font-size: 2em;
+        }
+        .context {
+          font-size: 1.1em;
+          position: absolute;
+          border:2px solid black;
+          /*width: 200px;*/
+          height: auto;
+          padding: 5px 0px;
+          /*border-radius: 5px;*/
+          top: 10px;
+          left: 10px;
+          background-color: rgba(200, 200, 200, 0.7);
+          box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+          color: #333;
+        }
+        .context:after {
+          content: "";
+          position:absolute;
+          z-index:-10;
+          margin-left:calc(-35px + 100%);
+          margin-top:-30px;
+          width:40px;
+          height:40px;
+          background-image: url("https://i.ibb.co/7NRZVND/pixil-frame-0-1.png"); /* to see where it is */
+            background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          transform: rotate(270deg);
+        }
+        .context:before {
+          content: "";
+          position:absolute;
+          z-index:-10;
+          margin-left:calc(-35px + 100%);
+          margin-top:-10px;
+          width:40px;
+          height:40px;
+          background-image: url("https://i.ibb.co/7NRZVND/pixil-frame-0-1.png"); /* to see where it is */
+            background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          transform: rotate(180deg);
+        }
+        .border_fix:before{
+          content: "";
+          position:absolute;
+          z-index:-10;
+          margin-left:-5px;
+          margin-top:-10px;
+          width:40px;
+          height:40px;
+          background-image: url("https://i.ibb.co/7NRZVND/pixil-frame-0-1.png"); /* to see where it is */
+            background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          transform: rotate(90deg);
+        }
+        .border_fix:after{
+          content: "";
+          position:absolute;
+          z-index:-10;
+          margin-left:-5px;
+          margin-top:-30px;
+          width:40px;
+          height:40px;
+          background-image: url("https://i.ibb.co/7NRZVND/pixil-frame-0-1.png"); /* to see where it is */
+            background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .context .context_item {
+          width: 200px;
+          height: 32px;
+          line-height: 32px;
+          cursor: pointer;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .context .context_item:hover {
+          background-color: #ddd;
+        }
+        .context .context_item .inner_item {
+          margin: 0px 10px;
+        }
+        .context .context_item .inner_item i {
+          margin: 0 5px 0 0;
+          font-weight: bold;
+        }
+        .context .context_hr {
+          height: 1px;
+          border-top: 1px solid #bbb;
+          margin: 3px 10px;
+        }
+        .resize_wrapper{
+            resize: both;
+            line-height: 32px;
+            cursor: pointer;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          margin-bottom: -5px;
+        }
+        
+        
+        /*#images{
+        
+        }*/
+        .expansion_override{
+          position:absolute;
+          width:20px;
+          height:20px;
+          margin-left:calc(100% - 20px);
+          margin-top:-10px;
+          z-index:-1;
+        }
+        .eraser_size{
+          position: absolute;
+          width:40px;
+          height:40px;
+          border-radius:50%;
+          background-image: url("https://icons-for-free.com/download-icon-bx+eraser-1325051875255624736_256.ico");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-color: pink;
+        }
+        #tools{
+          position:absolute;
+          margin:10px;
+          width:60px;
+          height:180px;
+          background-color: AliceBlue;
+          border:1px solid black;
+        }
+        #tools > *{
+          margin:10px;
+          width:40px;
+        }
+        
+        div.swal2-popup.swal2-modal.swal2-show{
+          background: aliceblue !important;
+          border-radius: 0px !important;
+          overflow:hidden;
+        }
+        /*div.swal2-popup.swal2-modal.swal2-show *:not(swal2-icon.swal2-success.swal2-animate-success-icon *){
+          border-radius: 0px !important;
+        }*/
+        .swal2-success-fix,.swal2-success-circular-line-left,.swal2-success-circular-line-right{
+          background: aliceblue !important;
+        }
+        
+        
+        
+        
+        
+        div.swal2-popup.swal2-modal.swal2-show{
+                /* fake border */
+                position: relative;
+                overflow: hidden;
+                box-shadow: inset 0px 0px 0px 5px black;
+                padding: 1em;
+            }
+        
+            div.swal2-popup.swal2-modal.swal2-show:before {
+                /* this element will hide the fake border on the top and bottom */
+                content:'';         
+                display: block;
+                position: absolute;
+                border-top:10px solid aliceblue;
+                border-bottom:10px solid aliceblue;
+                /* height = border-width x2 */
+                height:calc(100% - 20px); 
+                top:0;
+                /* width = size of fake-border x2 */
+                width: calc(100% - 72px);
+                /* left = size of fake-border */
+                left:36px;
+            }
+        
+            div.swal2-popup.swal2-modal.swal2-show:after {
+                /* this element will hide the fake border on the left and right */
+                /* the rules for width, heigth, top and left will be the opposite of the former element */
+                display: block;
+                position: absolute;
+                content:'';
+                border-right:10px solid aliceblue;
+                border-left:10px solid aliceblue;
+                height:calc(100% - 72px);
+                width: calc(100% - 20px);
+                top:36px;
+                left: 0;
+            }
+        div.swal2-popup.swal2-modal.swal2-show button{
+          z-index:5
+        }
