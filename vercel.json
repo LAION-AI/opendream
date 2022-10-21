@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^(?!\\/api).*",
+      "dest": "/"
+    }
+  ],
+  "build": {
+    "env": {
+      "ENABLE_VC_BUILD": "1"
+    }
+  }
+}

@@ -1,2 +1,2 @@
-# opendream
-Frontend (and soon also midleware and backend) for a new, opensource image generation platform.
+# OpenDream
+Front for the OpenDream project by LAION (powered by Selas)
