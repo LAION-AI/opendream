@@ -9,13 +9,13 @@ import Logo from "../assets/logo.svg";
 import { atom } from "solid-use";
 import { Sidebar } from "./components/sidebar";
 import { createOnAuthStateChange, ProfileProvider, SupabaseProvider, useProfile } from "./contexts/supabase";
-import Community from "./pages/space/community";
 import Gallery from "./pages/space/gallery";
 import Create from "./pages/space/create";
-import Profile from "./pages/space/profile";
 import { DataProvider } from "./contexts/data";
 import { ConfigProvider } from "./contexts/config";
 import PasswordInput, { SecretPhraseInput } from "./components/passwordInput";
+import Annotation from "./pages/space/annotation";
+import Horde from "./pages/space/horde";
 
 const App: Component = () => {
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -31,10 +31,10 @@ const App: Component = () => {
           <Route path="/" component={Landing} />
           <Route path="/login" component={Login} />
           <Route path="/space" component={Space}>
-            <Route path="/community" component={Community} />
             <Route path="/gallery" component={Gallery} />
             <Route path="/create" component={Create} />
-            <Route path="/profile" component={Profile} />
+            <Route path="/annotation" component={Annotation} />
+            <Route path="/horde" component={Horde} />
           </Route>
         </Routes>
         </ConfigProvider>

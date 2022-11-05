@@ -126,7 +126,7 @@ const Hero: Component<{}> = (props) => {
           <Show when={secretPhrase()}>
             <div class="py-1.2rem gap-1.8rem text-white fw-800">
               <Link href="/space/create" class="bg-blu h-2.6rem btn">
-                <span class="font-semibold">Start right now</span>
+                <span class="font-medium">Start right now</span>
               </Link>
             </div>
           </Show>

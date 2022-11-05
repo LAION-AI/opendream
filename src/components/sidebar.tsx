@@ -50,7 +50,7 @@ export const Sidebar: Component<{ toggle: Atom<boolean> }> = (props) => {
 
         {/* Avatar and username + company */}
         <div>
-          <Link href="/space/profile">
+          <Link href="/space/annotation">
             <div class="rounded-full overflow-clip w-86px h-86px my-1rem mx-auto cursor-pointer hover:ring-blu/80 hover:ring-4px transition">
               <HashAvatar name={"1234"} height={86} width={86} radius={4} />
             </div>
@@ -65,9 +65,8 @@ export const Sidebar: Component<{ toggle: Atom<boolean> }> = (props) => {
         <div class="flex flex-col gap-1rem max-w-18rem color-dark/90">
           <SidebarItem title="Create" icon="i-bxs:palette" />
           <SidebarItem title="Gallery" icon="i-bxs:image" />
-          <SidebarItem title="Community" icon="i-bxs:planet" />
-
-          <SidebarItem title="Profile" icon="i-bxs:face" />
+          <SidebarItem title="Annotation" icon="i-bxs:pencil" />
+          <SidebarItem title="Horde" icon="i-game-icons:entangled-typhoon" />
         </div>
 
         {/* Logout button */}
@@ -97,7 +96,7 @@ const SidebarItem: Component<{ href?: string; title: string; icon: string }> = (
       activeClass="hover:shadow-none bg-blu/90 color-white"
     >
       <div class="inline-block ml-1rem translate-y-2px">
-        <div class={`${props.icon} self-center mr-1rem -translate-y-1px fs-1.8rem`}></div>
+        <div class={`${props.icon} self-center mr-1rem -translate-y-4px fs-1.8rem`}></div>
         {props.title}
       </div>
     </NavLink>
@@ -114,7 +113,7 @@ const Hamburger: Component<{open: Atom<boolean>}> = (props) => {
   return (
     <>
       <button
-        class={`menu ${props.open() ? "opened" : ""} md:invisible md:absolute relative display-flex visible z-120`}
+        class={`menu ${props.open() ? "opened" : ""} relative display-flex visible z-120`}
         onClick={handleClick}
       >
         <svg class="h-2rem w-2rem" viewBox="0 0 100 100">
