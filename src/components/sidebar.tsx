@@ -1,6 +1,6 @@
 import { Component, createEffect, For, Show } from "solid-js";
 
-import Logo from "../assets/Scrypr-0.svg";
+import Logo from "../assets/logo.svg";
 import { Atom, atom } from "solid-use";
 import { Session } from "@supabase/supabase-js";
 import { Link, NavLink, useLocation } from "solid-app-router";

@@ -4,10 +4,8 @@ import { Component, createEffect, createMemo, onMount, Show } from "solid-js";
 
 import Landing from "./pages/landing";
 import Login from "./pages/login";
-import Maintenance from "./pages/maintenance";
-import Signup from "./pages/signup";
 
-import Logo from "../assets/Scrypr-0.svg";
+import Logo from "../assets/logo.svg";
 import { atom } from "solid-use";
 import { Sidebar } from "./components/sidebar";
 import { createOnAuthStateChange, ProfileProvider, SupabaseProvider, useProfile } from "./contexts/supabase";
@@ -31,8 +29,6 @@ const App: Component = () => {
         <Routes>
           <Route path="/" component={Landing} />
           <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/maintenance" component={Maintenance} />
           <Route path="/space" component={Space}>
             <Route path="/community" component={Community} />
             <Route path="/gallery" component={Gallery} />

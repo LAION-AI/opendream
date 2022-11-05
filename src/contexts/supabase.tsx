@@ -11,49 +11,19 @@ interface Props {
   children?: JSX.Element;
 }
 
-type Profile = {
-  id: string;
-  fullname: string;
-  avatar_url: string;
-  username: string;
-  organization: string;
-  bio: string;
-  website: string;
-  email: string;
-  phone: string
-}
 
-const ProfileContext = createContext<{profile: Atom<Profile>, user: Atom<User>, fetch: () => void, loading: Atom<boolean>}>();
+
+const ProfileContext = createContext<{secretPhrase: Atom<string>}>();
 
 export function ProfileProvider(props) {
-  const supabase = createSupabase()
-  const auth = createSupabaseAuth()
-  
-  const profile = atom<Profile>(null)
-  const user = atom<User>(null)
-  const loading = atom(true)
+  const secretPhrase = atom<string>(null)
+  localStorage.getItem("openDreamSecretPhrase")
 
-
-  const fetch = async () => {
-      await supabase.from("profiles").select("*").eq("id", user().id).single().then((data) => { profile(data.data) })
-      loading(false)
-  }
-
-  createOnAuthStateChange((event, session) => {
-    if (event === "SIGNED_IN") {
-      user(session.user)
-      fetch()
-    }
-    if (event === "SIGNED_OUT") {
-      user(null);
-      profile(null);
-    }
-  })
-
+  console.log("secretPhrase", secretPhrase)
 
 
   return (
-      <ProfileContext.Provider value={{profile, user, fetch , loading}}>
+      <ProfileContext.Provider value={{secretPhrase}}>
           {props.children}
       </ProfileContext.Provider>
   )

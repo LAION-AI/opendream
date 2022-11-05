@@ -35,8 +35,8 @@ export default defineConfig({
       green: "#00E94F",
       pink: "#E08AF4",
       teal: "#00D1B0",
-      blue: "#5D48E3",
-      blu: "#5D48E3",
+      blue: "#1D374E",
+      blu: "#1D374E",
     },
   },
   shortcuts: [
