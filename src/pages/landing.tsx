@@ -5,13 +5,14 @@ import "./hamburger.css";
 import Logo from "../assets/logo.svg";
 import laion_logo from "../assets/laion_logo.png";
 import fire from "../assets/fire_emoji.gif";
-import blob from "../assets/blob.png"
+import blob from "../assets/blob.png";
 
 import { atom } from "solid-use";
 import { Link } from "solid-app-router";
 import DropdownAvatar from "../components/dropdown";
 import { useProfile } from "../contexts/supabase";
 import { AnimationImage } from "../components/animation";
+import { SecretPhraseInput } from "../components/passwordInput";
 
 const Landing: Component<{}> = (props) => {
   return (
@@ -36,7 +37,6 @@ const Navbar: Component<{}> = (props) => {
       <Hamburger />
       <DropdownAvatar />
       <Buttons />
-      
     </div>
   );
 };
@@ -83,39 +83,57 @@ const Hamburger: Component<{}> = (props) => {
 };
 
 const Buttons: Component<{}> = (props) => {
-  const { user } = useProfile();
+  const { secretPhrase } = useProfile();
 
   return (
-    <Show when={!user()}>
-    <div class="invisible absolute md:relative md:display-flex md:visible justify-center items-center gap-1.8rem text-white fw-800">
-      <Link href="/login" class="bg-blu h-2.4rem btn">
-        <span class="">Log In</span>
-      </Link>
-    </div>
+    <Show
+      when={!secretPhrase()}
+      fallback={
+        <div class="invisible absolute md:relative md:display-flex md:visible justify-center items-center gap-1.8rem text-white fw-800">
+          <Link href="/space/create" class="bg-blu h-2.6rem btn">
+            <span class="font-semibold">Go to OpenDream!</span>
+          </Link>
+        </div>
+      }
+    >
+      <div class="invisible absolute md:relative md:display-flex md:visible justify-center items-center gap-1.8rem text-white fw-800">
+        <Link href="/login" class="bg-blu h-2.4rem btn">
+          <span class="">Log In</span>
+        </Link>
+      </div>
     </Show>
   );
 };
 
 const Hero: Component<{}> = (props) => {
+  const { secretPhrase } = useProfile();
+
   return (
     <main class="lg:relative">
       <div class="flex flex-col px-1rem mx-auto max-w-1280px text-center py-2rem md:py-8rem lg:py-12rem xl:py-6rem lg:px-2.4rem lg:text-left align-middle lg:flex-row">
         <div class="flex flex-col justify-center mx-auto md:w-1/2 lg:w-3/5">
           <div class="fw-800 fs-2rem lh-2rem md:fs-2.2rem md:lh-2.2rem lg:fs-2.2rem lg:lh-2.2rem xl:fs-2.7rem xl:lh-2.8rem">
             <div class="flex justify-center lg:justify-start items-center">
-            <div class="">Create without limits</div>
-            <img class="h-3rem w-3rem -translate-y-0.6rem" src={fire} />
+              <div class="">Create without limits</div>
+              <img class="h-3rem w-3rem -translate-y-0.6rem" src={fire} />
             </div>
             <div class=" text-blue">with the Open Source community</div>
           </div>
           <div class="fs-0.9rem pt-1rem font-sans px-8vw lh-1.8rem md:fs-1.2rem md:px-0 lg:fs-1.2rem xl:fs-1.2rem mt-3 text-gray-500 xl:max-w-34rem xl:lh-1.6rem">
-            OpenDream is an image generation tool powered by artificial intelligence. Laion AI is giving this tool to the public for free in exchange for annotations.
-
+            OpenDream is an image generation tool powered by artificial intelligence. Laion AI is giving this tool to
+            the public for free in exchange for annotations.
           </div>
+          <Show when={secretPhrase()}>
+            <div class="py-1.2rem gap-1.8rem text-white fw-800">
+              <Link href="/space/create" class="bg-blu h-2.6rem btn">
+                <span class="font-semibold">Start right now</span>
+              </Link>
+            </div>
+          </Show>
         </div>
         <div class="relative -translate-y-4rem">
           <img class="absolute w-512 h-256px scale-160 top-13rem left-6rem object-fill brightness-150" src={blob} />
-          <AnimationImage width={512} height={512} image={laion_logo} depth={laion_logo} speed={4}  />
+          <AnimationImage width={512} height={512} image={laion_logo} depth={laion_logo} speed={4} />
         </div>
       </div>
     </main>

@@ -9,28 +9,41 @@ import { createSupabase, useProfile } from "../contexts/supabase";
 
 const Login: Component<{}> = (props) => {
   const supabase = createSupabase();
-  const email = atom("");
   const password = atom("");
   const navigate = useNavigate();
-  const { secretPhrase } = useProfile();
+  const { secretPhrase, firstConnect, credits } = useProfile();
 
   const handleSignin = async (e: Event) => {
     e.preventDefault();
 
-    alert("NOT IMPLEMENTED");
+    const { data, error } = await supabase.rpc("check_credits", {phrase_arg: password()});
+    
+    if (error) {
+      alert(error.message);
+    }
+    else if (data===null) {
+      alert("Invalid secret phrase");
+    }
+    else {
+      secretPhrase(password());
+      credits(data);
+      navigate("/space/create");
+    }
+
   };
 
   const handleRegister = async (e: Event) => {
     e.preventDefault();
-    const { data, error } = await supabase.from("users").insert({});
-
+    // const { data, error } = await supabase.from("users").insert({}).select();
+    const { data, error } = await supabase.rpc("create_user");
+    
+    
     if (error) {
       alert(error.message);
     } else {
-      console.log(data)
-      localStorage.setItem("openDreamSecretPhrase", data.secretPhrase);
       secretPhrase(data);
-      navigate("/dashboard");
+      firstConnect(true);
+      navigate("/space/create");
     }
   };
 

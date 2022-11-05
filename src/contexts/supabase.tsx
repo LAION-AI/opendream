@@ -1,4 +1,4 @@
-import type { Component, JSX } from "solid-js";
+import { Component, createEffect, JSX } from "solid-js";
 import { createContext } from "solid-js";
 import type { AuthChangeEvent, Session, SupabaseClient, User } from "@supabase/supabase-js";
 import { createRenderEffect, onCleanup, useContext } from "solid-js";
@@ -12,18 +12,26 @@ interface Props {
 }
 
 
-
-const ProfileContext = createContext<{secretPhrase: Atom<string>}>();
+const ProfileContext = createContext<{secretPhrase: Atom<string>, firstConnect: Atom<boolean>, credits: Atom<number>}>();
 
 export function ProfileProvider(props) {
-  const secretPhrase = atom<string>(null)
-  localStorage.getItem("openDreamSecretPhrase")
+  const secretPhrase = atom<string>(localStorage.getItem("openDreamSecretPhrase"))
+  const firstConnect = atom<boolean>(false);
+  const credits = atom<number>(0);
 
-  console.log("secretPhrase", secretPhrase)
 
+  createEffect(() => {
+    if (secretPhrase()) {
+      localStorage.setItem("openDreamSecretPhrase", secretPhrase());
+    }
+    else {
+      localStorage.removeItem("openDreamSecretPhrase");
+    }
+  })
+  
 
   return (
-      <ProfileContext.Provider value={{secretPhrase}}>
+      <ProfileContext.Provider value={{secretPhrase, firstConnect, credits}}>
           {props.children}
       </ProfileContext.Provider>
   )
